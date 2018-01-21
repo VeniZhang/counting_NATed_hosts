@@ -5,20 +5,21 @@ import sys
 import getopt
 ip = ""
 file_ = ""
+WARN = "./counting_NATed_hosts - i <inputfile> -p <ip>"
 try:
     opts, args = getopt.getopt(sys.argv[1:],"hi:p:",["file=", "ip="])
 except getopt.GetoptError:
-        print "./zhangqiang -i <inputfile> -p <ip>"
+        print WARN
 for opt, arg in opts:
     if opt == "-h":
-        print "./zhangqiang -i <inputfile> -p <ip>"
+        print WARN
         sys.exit(2)
     elif opt in ("-i", "--file"):
         file_ = arg
     elif opt in ("-p", "--ip"):
         ip = arg
     else:
-        print "./zhangqiang -i <inputfile> -p <ip>"
+        print WARN
         sys.exit(1)
 if file_ == "":
     file_ = "src-10.1.50.21-ssh-ftp-http.pcap"
